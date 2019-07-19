@@ -1,4 +1,4 @@
-# cppnbstripout
+# cppnbstripout [![Build Status](https://travis-ci.com/paulgessinger/cppnbstripout.svg?branch=master)](https://travis-ci.com/paulgessinger/cppnbstripout)
 
 ## Building
 This project uses a submodule for [`nlohmann::json`](https://github.com/nlohmann/json) and CMake for building.
