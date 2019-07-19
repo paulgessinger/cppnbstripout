@@ -1,7 +1,7 @@
 # cppnbstripout
 
 ## Building
-This project uses a submodule for `[nlohmann::json](https://github.com/nlohmann/json)` and CMake for building.
+This project uses a submodule for [`nlohmann::json`](https://github.com/nlohmann/json) and CMake for building.
 You need to `git submodule init` and `git submodule update` or use `git clone --recurse-submodule`.
 
 Then, you can run 
