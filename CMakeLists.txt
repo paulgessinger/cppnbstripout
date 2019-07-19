@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.11)
 project(cppnbstripout LANGUAGES CXX)
 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
+set(JSON_Install OFF CACHE INTERNAL "")
 add_subdirectory(nlohmann_json)
 
 add_executable(cppnbstripout cppnbstripout.cpp)
@@ -13,3 +14,5 @@ target_link_libraries(cppnbstripout PRIVATE nlohmann_json::nlohmann_json)
 if(NOT APPLE)
   target_link_libraries(cppnbstripout PUBLIC -static)
 endif()
+
+install (TARGETS cppnbstripout RUNTIME DESTINATION bin)
