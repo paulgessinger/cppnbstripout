@@ -1,10 +1,17 @@
+#include "cppnbstripoutlib.hpp"
+
+#include <string>
 #include <fstream>
 #include <iostream>
+#include <memory>
+
 #include <nlohmann/json.hpp>
 
 using nlohmann::json;
 
 void clean(json& j) {
+  j["metadata"]["language_info"]["version"] = nullptr;
+
   json& cells = j["cells"];
 
   for (auto& cell : cells) {
@@ -15,15 +22,7 @@ void clean(json& j) {
   }
 }
 
-int main(int argc, char* argv[]) {
-  if (argc > 1) {
-    std::string arg{argv[1]};
-
-    if (arg == "-h") {
-      std::cerr << "usage: cppnbstripout [INPUT] [OUTPUT]" << std::endl;
-      return 0;
-    }
-  }
+void cppnbstripout(const std::string& infile, const std::string& outfile) {
 
   std::unique_ptr<std::istream> ifs{nullptr};
   std::unique_ptr<std::ostream> ofs{nullptr};
@@ -31,14 +30,6 @@ int main(int argc, char* argv[]) {
   std::istream* is{&std::cin};
   std::ostream* os{&std::cout};
 
-  std::string infile = "-";
-  std::string outfile = "-";
-  if (argc > 1) {
-    infile = argv[1];
-  }
-  if (argc > 2) {
-    outfile = argv[2];
-  }
 
   if (infile != "-") {
     ifs = std::make_unique<std::ifstream>(infile);
@@ -67,4 +58,5 @@ int main(int argc, char* argv[]) {
 
   (*os) << input.dump(1);
   (*os) << "\n";
+
 }
