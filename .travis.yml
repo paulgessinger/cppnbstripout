@@ -9,7 +9,7 @@ before_install:
 
 install: 
   # C++17
-  - sudo apt-get install -qq g++-8 gtest
+  - sudo apt-get install -qq g++-8 libgtest-dev
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 90
 
 script: 
