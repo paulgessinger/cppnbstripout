@@ -5,13 +5,20 @@
 using nlohmann::json;
 
 void clean(json& j) {
+  //j["metadata"]["language_info"]["version"] = nullptr;
+
   json& cells = j["cells"];
 
   for (auto& cell : cells) {
-    if (cell["execution_count"] != nullptr) {
-      cell["execution_count"] = 0;
+    if(cell.find("execution_count") != cell.end()) {
+        cell["execution_count"] = nullptr;
     }
-    cell["outputs"] = json::array();
+    if(cell.find("outputs") != cell.end()) {
+      cell["outputs"] = json::array();
+    }
+    if(cell.find("metadata") != cell.end()) {
+      cell["metadata"] = json::object();
+    }
   }
 }
 
