@@ -58,10 +58,8 @@ int main(int argc, char* argv[]) {
     throw std::runtime_error("Too many arguments");
   }
 
-  for(auto arg: args) { std::cout << arg << std::endl; }
 
   bool strip_kernel_spec = program.get<bool>("--kernel-spec");
-  std::cout << strip_kernel_spec << std::endl;
 
   std::string infile = "-";
   std::string outfile = "-";
